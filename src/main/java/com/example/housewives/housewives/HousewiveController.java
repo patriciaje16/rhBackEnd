@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = {"http://localhost:3000"})
 public class HousewiveController {
 
     private List<Housewife> housewifeList = new ArrayList<>();
@@ -19,9 +20,8 @@ public class HousewiveController {
     private HousewifeRepository housewifeRepository;
 
     @GetMapping("/housewives")
-    public ResponseEntity<List<Housewife>> getAllHousewives() {
-        List<Housewife> listOfHousewives = this.housewifeRepository.findAll();
-        return ResponseEntity.status(HttpStatus.OK).body(this.housewifeList);
+    public List<Housewife> getAllHousewives() {
+        return housewifeRepository.findAll();
     }
 
     @PostMapping("/housewife")
