@@ -25,7 +25,8 @@ public class HousewiveController {
     }
 
     @PostMapping("/housewife")
-    public String addHousewife(@RequestBody Housewife text) {
+    public String addHousewife(@RequestBody Housewife text, @PathVariable String housewifeId)
+    {
         this.housewifeRepository.save(text);
         System.out.println("Added " + text);
         return "Housewife saved okay";
