@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = {"http://localhost:3000"})
+@CrossOrigin(origins = {"http://localhost:3000"}) ///may have to put
 public class HousewiveController {
 
     private List<Housewife> housewifeList = new ArrayList<>();
@@ -25,10 +25,17 @@ public class HousewiveController {
     }
 
     @PostMapping("/housewife")
-    public String addPokemon(@RequestBody Housewife text) {
+    public String addHousewife(@RequestBody Housewife text) {
         this.housewifeRepository.save(text);
         System.out.println("Added " + text);
         return "Housewife saved okay";
+    }
+
+    @PutMapping("/housewife/update/{housewifeId}")
+    public String updateHousewife(@RequestBody Housewife text) {
+        this.housewifeRepository.save(text);
+        System.out.println("Updated " + text);
+        return "Housewife updated okay";
     }
 
     @DeleteMapping("/housewife/{housewifeId}")
@@ -41,6 +48,8 @@ public class HousewiveController {
         }
         return "Housewife Id doesn't exist";
     }
+
+
 
 
 
