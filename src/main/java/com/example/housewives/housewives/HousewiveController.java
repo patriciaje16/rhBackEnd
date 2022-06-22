@@ -33,7 +33,7 @@ public class HousewiveController {
     }
 
     @PutMapping("/housewife/update/{housewifeId}")
-    public String updateHousewife(@RequestBody Housewife text) {
+    public String updateHousewife(@RequestBody Housewife text, @PathVariable int housewifeId) {
         this.housewifeRepository.save(text);
         System.out.println("Updated " + text);
         return "Housewife updated okay";
